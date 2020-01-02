@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Alert from "react-bootstrap/Alert";
+import ButtonToolbar from "react-bootstrap/ButtonToolbar";
+import Button from "react-bootstrap/Button";
 import {
   BrowserRouter as Router,
   Switch,
@@ -66,20 +69,22 @@ function Topics() {
   return (
     <div>
       <h1>Topics</h1>
-      <ul>
-        <li>
+      <ButtonToolbar>
+        <Button variant="outline-success">
           <Link to={`${match.url}/components`}>Components</Link>
-        </li>
-        <li>
+        </Button>
+        <Button variant="outline-success">
           <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-        </li>
-      </ul>
+        </Button>
+      </ButtonToolbar>
       <Switch>
         <Route path={`${match.url}/:topicId`}>
           <Topic />
         </Route>
         <Route path={match.path}>
-          <h3>Please select a topic.</h3>
+          <Alert variant="success">
+            <p>Please select a topic.</p>
+          </Alert>
         </Route>
       </Switch>
     </div>
