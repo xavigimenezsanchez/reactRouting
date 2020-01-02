@@ -9,6 +9,7 @@ import {
   useParams
 } from "react-router-dom";
 
+//https://reacttraining.com/react-router/web/guides/quick-start
 import "./styles.css";
 
 function App() {
@@ -61,6 +62,7 @@ function Users() {
 }
 function Topics() {
   let match = useRouteMatch();
+  console.log("patata");
   return (
     <div>
       <h1>Topics</h1>
@@ -73,11 +75,11 @@ function Topics() {
         </li>
       </ul>
       <Switch>
-        <Route path={`{match.url}/:topicId`}>
+        <Route path={`${match.url}/:topicId`}>
           <Topic />
         </Route>
         <Route path={match.path}>
-          <h3>Please seelct a topic.</h3>
+          <h3>Please select a topic.</h3>
         </Route>
       </Switch>
     </div>
@@ -87,5 +89,6 @@ function Topic() {
   let { topicId } = useParams();
   return <h3>Requested topid ID: {topicId}</h3>;
 }
+
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
